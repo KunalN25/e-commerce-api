@@ -98,6 +98,15 @@ const Products = ({products, addToCart}) => {
                     </Grid>
                 ))}
             </Grid>
+            
+            <div>
+                <h1>Additional Features (Tentative)</h1> 
+                Login and auth, editing profile, wishlist, <br/>
+                product review(opt), search products
+            </div>
+
+
+
         </main>
     )
 }

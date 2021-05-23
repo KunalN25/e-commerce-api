@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 // import Products from './components/Products/Products'
 // Default exports taken from the components folder where they are defined separately
 // so as to not make the code messy here
-import {Products, Navbar, Cart} from './components'
+import {Products, Navbar, Cart, Checkout} from './components'
 import { commerce } from './lib/commerce'
 import  useStyles from './styles.js'
 
@@ -53,7 +53,7 @@ const App = () => {
         fetch()
         fetchCart()
     },[])
-    console.log('Products  ', products)    
+    // console.log('Products  ', products)    
 
     return (
         <Router>
@@ -74,7 +74,11 @@ const App = () => {
                         />
 
                     </Route>
+                    <Route exact path='/checkout'>
+                        {/* Pass the cart to Checkout component to generate token for the API */}
+                        <Checkout cart={cart}></Checkout>
 
+                    </Route>
                 </Switch>
                 
             </div>

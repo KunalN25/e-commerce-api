@@ -8,7 +8,7 @@ import  {Link, useLocation} from 'react-router-dom'
 const Navbar = ({ count }) => {
     const classes=useStyles();
     const location=useLocation();
-    console.log('Location path  ', location.pathname)
+    // console.log('Location path  ', location.pathname)
     return (
         <>
             <AppBar position='fixed' color='inherit' className={classes.appBar}>

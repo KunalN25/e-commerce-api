@@ -1,6 +1,8 @@
 import React from 'react'
 import {Card, CardMedia, CardContent, CardActions, Typography, IconButton} from '@material-ui/core'
 import {AddShoppingCart} from '@material-ui/icons'
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import useStyles from './styles'
 
 // Each product item
@@ -25,12 +27,20 @@ const ProductItem = ({ product , addToCart }) => {
                    
                     
                 </CardContent>
-                <CardActions disableSpacing className={classes.cardActions}>
+                <CardActions disableSpacing  className={classes.cardActions}>
+                    
+                    <IconButton aria-label="Add to Wishlist"   >
+                        <FavoriteBorderOutlinedIcon  />
+
+                    </IconButton>
+                    
                     {/* Icon Button to add the product to cart */}
                     {/* Set the product count as 1 while adding it */}
                     <IconButton aria-label="Add to Cart" onClick={() => addToCart(product.id, 1) }>
                         <AddShoppingCart/>
                     </IconButton>
+
+                    
 
                 </CardActions>
 

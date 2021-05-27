@@ -20,4 +20,9 @@ export default makeStyles(() => ({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  fav_icon: {
+      color: 'red',
+      fontSize: '24px'
+      // border: 'solid red'
+  }
 }));

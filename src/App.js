@@ -128,7 +128,7 @@ const App = () => {
                         <div style={{marginTop: '100px' }} >
                             <h1>Additional Features (Tentative)</h1> 
                             Login and auth, editing profile, wishlist, <br/>
-                            product review(opt), search products
+                            product review(opt), search products, say out of stock
                         </div>  
 
                     </Route>

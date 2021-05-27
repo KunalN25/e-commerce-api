@@ -10,10 +10,14 @@ import  useStyles from './styles.js'
 
 
 const App = () => {
-
-    const [products, setProducts] = useState([])
-    const [cart, setCart] = useState({})
     
+    const [products, setProducts] = useState([])
+    const [cart, setCart] = useState({})    //Cart
+    const [order,setOrder]= useState({})    //Final order
+    const [error_msg, setError_msg] = useState('')
+    const [error_obj, setError_obj] = useState({})
+    const [refreshed, setRefreshed] = useState(false)   //Set whether cart is refreshed
+
     // Fetch the products
     const fetch = async () => {
         const {data} = await commerce.products.list()
@@ -49,6 +53,36 @@ const App = () => {
     
         setCart(response.cart);
       };
+
+      const refreshCart = async () => {
+        //   After the order is complete, the cart is refreshed
+          const newCart= await commerce.cart.refresh()
+        //   console.log(newCart)
+          setCart(newCart)
+          setRefreshed(true)
+      }
+
+      const handleCaptureCheckout = async (checkoutToken, order) => {
+            try {
+                console.log('Checkout complete')
+                 commerce.checkout.capture(checkoutToken, order)
+                                    .then((response) => {
+                                        console.log(response)
+                                        setOrder(response)   
+                
+                                        refreshCart()
+                                    },(err)=>{
+                                        console.log(err)
+                                        setError_obj(err.data.error)
+                                    })
+                
+            } catch (error) {
+                // setError_msg(error.data.error.message)
+                // setError_obj(error.data.error)
+
+                // console.log(error_msg)
+            }
+      }
     useEffect(()=>{
         fetch()
         fetchCart()
@@ -76,7 +110,26 @@ const App = () => {
                     </Route>
                     <Route exact path='/checkout'>
                         {/* Pass the cart to Checkout component to generate token for the API */}
-                        <Checkout cart={cart}></Checkout>
+                        <Checkout 
+                            cart={cart} 
+                            order={order}
+                            onCaptureCheckout={handleCaptureCheckout}
+                            error_msg = {error_msg}
+                            error={error_obj}
+                            setError = {setError_obj}
+                            refreshed={refreshed}
+                            ></Checkout>
+
+                    </Route>
+
+
+
+                    <Route exact path='/feature'>
+                        <div style={{marginTop: '100px' }} >
+                            <h1>Additional Features (Tentative)</h1> 
+                            Login and auth, editing profile, wishlist, <br/>
+                            product review(opt), search products
+                        </div>  
 
                     </Route>
                 </Switch>

@@ -61,62 +61,65 @@ const AddressForm = ({ checkoutToken,next }) => {
             <Typography variant="h6" gutterBottom>Shipping address</Typography>
             <FormProvider {...methods}>
                 {/* data object contains data for all specific fields */}
-                <form onSubmit={methods.handleSubmit((data) => next(data))}>
-                <Grid container spacing={3}>
-                    {/* Required, name of the field and label */}
-                    <FormInput name="firstName" label="First name" />
-                    <FormInput name="lastName" label="Last name" />
-                    <FormInput name="address1" label="Address line 1" />
-                    <FormInput name="email" label="Email" />
-                    <FormInput name="city" label="City" />
-                    <FormInput name="zip" label="Zip / Postal code" />
-                    
-                    {/* Shipping fields Not included */}
-                    <>
-                    {/* <Grid item xs={12} sm={6}>
-                        <InputLabel>Shipping Country</InputLabel>
-                        <Select value={shippingCountry} 
-                                fullWidth 
-                                onChange={(e) => setShippingCountry(e.target.value)}>
-                            {countries.map((country) => (
-                                <MenuItem key={country.id} value={country.id}>    
-                                    {country.label}
+                <form onSubmit={methods.handleSubmit((data) => {
+                                                        // console.log(methods.formState.errors)
+                                                        console.log(data)
+                                                        next(data)})}>
+                    <Grid container spacing={3}>
+                        {/* Required, name of the field and label */}
+                        <FormInput name="firstName" label="First name" />
+                        <FormInput name="lastName" label="Last name" />
+                        <FormInput name="address1" label="Address line 1"/>
+                        <FormInput name="email" label="Email" />
+                        <FormInput name="city" label="City"/>
+                        <FormInput name="zip" label="Zip / Postal code"/>
+                        
+                        {/* Shipping fields Not included */}
+                         <>
+                        {/* <Grid item xs={12} sm={6}>
+                            <InputLabel>Shipping Country</InputLabel>
+                            <Select value={shippingCountry} 
+                                    fullWidth 
+                                    onChange={(e) => setShippingCountry(e.target.value)}>
+                                {countries.map((country) => (
+                                    <MenuItem key={country.id} value={country.id}>    
+                                        {country.label}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <InputLabel>Shipping Subdivision</InputLabel>
+                            <Select value={shippingSubdivision} 
+                                    fullWidth 
+                                    onChange={(e) => setShippingSubdivision(e.target.value)}>
+                                        {/* Map over object entries 
+                                {subdivisions.map((item) => (
+                                <MenuItem key={item.id} value={item.id}>
+                                    {item.label}
                                 </MenuItem>
-                            ))}
-                        </Select>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <InputLabel>Shipping Subdivision</InputLabel>
-                        <Select value={shippingSubdivision} 
-                                fullWidth 
-                                onChange={(e) => setShippingSubdivision(e.target.value)}>
-                                    {/* Map over object entries 
-                            {subdivisions.map((item) => (
-                            <MenuItem key={item.id} value={item.id}>
-                                {item.label}
-                            </MenuItem>
-                            ))}
-                        </Select>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <InputLabel>Shipping Options</InputLabel>
-                        <Select value={shippingOption} 
-                                fullWidth 
-                                onChange={(e) => setShippingOption(e.target.value)}>
-                            {options.map((item) => (
-                            <MenuItem key={item.id} value={item.id}>
-                                {item.label}
-                            </MenuItem>
-                            ))}
-                        </Select>
-                    </Grid> */}
-                    </>
-                </Grid>  
-                <br />
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Button component={Link} to='/cart' variant="outlined" to="/cart">Back to Cart</Button>
-                    <Button type="submit" variant="contained" color="primary">Next</Button>
-                </div>
+                                ))}
+                            </Select>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <InputLabel>Shipping Options</InputLabel>
+                            <Select value={shippingOption} 
+                                    fullWidth 
+                                    onChange={(e) => setShippingOption(e.target.value)}>
+                                {options.map((item) => (
+                                <MenuItem key={item.id} value={item.id}>
+                                    {item.label}
+                                </MenuItem>
+                                ))}
+                            </Select>
+                        </Grid> */}
+                        </>
+                    </Grid>  
+                    <br />
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <Button component={Link} to='/cart' variant="outlined" to="/cart">Back to Cart</Button>
+                        <Button type="submit" variant="contained" color="primary">Next</Button>
+                    </div>
                 </form>
             </FormProvider>
         </>

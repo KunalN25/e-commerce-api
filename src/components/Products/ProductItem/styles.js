@@ -6,6 +6,7 @@ export default makeStyles(() => ({
   },
   // Product Image
   media: {
+    // width:'20px',
     height: 0,
     paddingTop: '56.25%', // 16:9
     // border: 'solid red'

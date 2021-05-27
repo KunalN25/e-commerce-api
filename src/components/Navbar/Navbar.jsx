@@ -15,7 +15,7 @@ const Navbar = ({ count }) => {
                 <Toolbar>
                     <Typography component={Link} to='/' variant='h6' className={classes.title}>
                         {/* <img src='' className={classes.image} alt='Electron' height='25px'  /> */}
-                        Electron
+                        E-Commerce Store
                     </Typography>
                     {/* <div className={classes.grow}/> */}
                     <div className={classes.button}>
